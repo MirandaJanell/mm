@@ -14,7 +14,7 @@ class StackTraceAndLogsTest(MavensMateTest):
         stdin = {
             "project_name"      : "unit test tooling project"
         }
-        mm_response = self.runCommand('delete_trace_flags', stdin)        
+        mm_response = self.runCommand('delete_trace_flags', stdin)
         self.assertTrue(mm_response['success'] == True)
 
     def test_02_should_create_new_trace_flag(self): 
@@ -26,11 +26,21 @@ class StackTraceAndLogsTest(MavensMateTest):
                 "Visualforce"   : "INFO"
             }
         }
-        mm_response = self.runCommand('new_log', stdin)        
+        mm_response = self.runCommand('new_log', stdin)
         self.assertTrue(mm_response['success'] == True)
         self.assertTrue('id' in mm_response and len(mm_response['id']) is 18)
 
     def test_03_should_create_new_quicklog(self): 
+        # need to delete existing trace flag first (since there
+        # can only be one TraceLog per TracedEntityId), NB: in 
+        # some cases salesforce doesn't seem to check this, but 
+        # it's not consistent
+        stdin = {
+            "project_name"      : "unit test tooling project"
+        }
+        mm_response = self.runCommand('delete_trace_flags', stdin)
+        self.assertTrue(mm_response['success'] == True)
+        
         stdin = {
             "project_name"      : "unit test tooling project",
             "type"              : "user",
@@ -48,7 +58,7 @@ class StackTraceAndLogsTest(MavensMateTest):
             "project_name"      : "unit test tooling project"
         }
         mm_response = self.runCommand('get_trace_flags', stdin)
-        self.assertTrue(mm_response['totalSize'] == 2)
+        self.assertTrue(mm_response['totalSize'] == 1)
         self.assertTrue(mm_response['entityTypeName'] == 'TraceFlag')
         self.assertTrue(mm_response['done'] == True)
 
