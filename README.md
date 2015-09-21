@@ -1,15 +1,13 @@
 mm
 ==
 
-**IMPORTANT** : the APIs in this project are deprecated. All development is currently occuring at https://github.com/joeferraro/MavensMate
+### IMPORTANT
+
+The APIs in this project are deprecated. All development is currently occuring at https://github.com/joeferraro/MavensMate
 
 ##### master
 
 [![Build Status](https://circleci.com/gh/joeferraro/mm.svg?style=shield&circle-token=0c3bafbd41995299906a7fc2a42205fcb8203509)](https://circleci.com/gh/joeferraro/mm)
-
-##### atom
-
-[![Build Status](https://circleci.com/gh/joeferraro/mm/tree/atom.svg?style=shield&circle-token=0c3bafbd41995299906a7fc2a42205fcb8203509)](https://circleci.com/gh/joeferraro/mm)
 
 ### Overview
 
